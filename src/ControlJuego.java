@@ -87,7 +87,8 @@ public class ControlJuego {
 	}
 
 	/**
-	 * Método que nos permite abrir una casilla. Devuelve verdadero y suma un punto si no hay mina, y devuelve falso si hay mina.
+	 * Método que nos permite abrir una casilla. Devuelve verdadero y suma un punto
+	 * si no hay mina, y devuelve falso si hay mina.
 	 * 
 	 * @pre : La casilla nunca debe haber sido abierta antes, no es controlado por
 	 *      el ControlJuego. Por lo tanto siempre sumaremos puntos
@@ -96,7 +97,12 @@ public class ControlJuego {
 	 * @return : Verdadero si no ha explotado una mina. Falso en caso contrario.
 	 */
 	public boolean abrirCasilla(int i, int j) {
-		return false;
+		if (tablero[i][j] != MINA) {
+			puntuacion++;
+			return true;			
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -107,7 +113,7 @@ public class ControlJuego {
 	 *         minas.
 	 **/
 	public boolean esFinJuego() {
-		return false;
+		return (puntuacion == (LADO_TABLERO * LADO_TABLERO) - MINAS_INICIALES);
 	}
 
 	/**
@@ -135,7 +141,7 @@ public class ControlJuego {
 	 * @return Un entero que representa el número de minas alrededor de la celda
 	 */
 	public int getMinasAlrededor(int i, int j) {
-		return 0;
+		return calculoMinasAdjuntas(i, j);
 	}
 
 	/**
@@ -144,7 +150,7 @@ public class ControlJuego {
 	 * @return Un entero con la puntuación actual
 	 */
 	public int getPuntuacion() {
-		return 0;
+		return puntuacion;
 	}
 
 }
