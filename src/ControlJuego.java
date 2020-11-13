@@ -97,12 +97,12 @@ public class ControlJuego {
 	 * @return : Verdadero si no ha explotado una mina. Falso en caso contrario.
 	 */
 	public boolean abrirCasilla(int i, int j) {
+		boolean libre = false;
 		if (tablero[i][j] != MINA) {
 			puntuacion++;
-			return true;			
-		} else {
-			return false;
+			libre = true;
 		}
+		return libre;
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class ControlJuego {
 	 * @return Un entero que representa el número de minas alrededor de la celda
 	 */
 	public int getMinasAlrededor(int i, int j) {
-		return calculoMinasAdjuntas(i, j);
+		return tablero[i][j];
 	}
 
 	/**

@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 /**
  * Ventana principal del Buscaminas
  * 
- * @author {Rellenar por el alumno}
+ * @author Ángel Canalo Domínguez
  */
 public class VentanaPrincipal {
 
@@ -155,6 +155,7 @@ public class VentanaPrincipal {
 					}
 				}
 				juego.inicializarPartida();
+				actualizarPuntuacion();
 				for (int i = 0; i < botonesJuego.length; i++) {
 					for (int j = 0; j < botonesJuego[i].length; j++) {
 						panelesJuego[i][j].add(botonesJuego[i][j]);
@@ -200,44 +201,21 @@ public class VentanaPrincipal {
 		if (porExplosion) {
 			for (int i = 0; i < panelesJuego.length; i++) {
 				for (int j = 0; j < panelesJuego[i].length; j++) {
-					if (this.juego.getMinasAlrededor(i, j) == -1) {
+					if (!juego.abrirCasilla(i, j)) {
 						panelesJuego[i][j].removeAll();
 						JLabel minaPisada = new JLabel("X", JLabel.CENTER);
 						panelesJuego[i][j].add(minaPisada);
+						botonesJuego[i][j].setEnabled(false);
 					}
 				}
 			}
 			refrescarPantalla();
 			JOptionPane.showMessageDialog(ventana, ("Has tocado una mina. Has perdido"));
-			for (int i = 0; i < botonesJuego.length; i++) {
-				for (int j = 0; j < botonesJuego[i].length; j++) {
-					panelesJuego[i][j].removeAll();
-				}
-			}
-			juego.inicializarPartida();
-			for (int i = 0; i < botonesJuego.length; i++) {
-				for (int j = 0; j < botonesJuego[i].length; j++) {
-					panelesJuego[i][j].add(botonesJuego[i][j]);
-					botonesJuego[i][j].setEnabled(true);
-				}
-			}
-			refrescarPantalla();
-		} else if (this.juego.esFinJuego()) {
+		} else if (juego.esFinJuego()) {
 			JOptionPane.showMessageDialog(ventana, ("Has conseguido esquivar las minas. Has ganado."));
-			for (int i = 0; i < botonesJuego.length; i++) {
-				for (int j = 0; j < botonesJuego[i].length; j++) {
-					panelesJuego[i][j].removeAll();
-				}
-			}
-			juego.inicializarPartida();
-			for (int i = 0; i < botonesJuego.length; i++) {
-				for (int j = 0; j < botonesJuego[i].length; j++) {
-					panelesJuego[i][j].add(botonesJuego[i][j]);
-					botonesJuego[i][j].setEnabled(true);
-				}
-			}
-			refrescarPantalla();
+
 		}
+		refrescarPantalla();
 	}
 
 	/**
@@ -253,7 +231,6 @@ public class VentanaPrincipal {
 	public void refrescarPantalla() {
 		ventana.revalidate();
 		ventana.repaint();
-		actualizarPuntuacion();
 	}
 
 	/**
