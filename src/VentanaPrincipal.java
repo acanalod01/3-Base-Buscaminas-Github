@@ -205,6 +205,7 @@ public class VentanaPrincipal {
 						panelesJuego[i][j].removeAll();
 						JLabel minaPisada = new JLabel("X", JLabel.CENTER);
 						panelesJuego[i][j].add(minaPisada);
+					}else{
 						botonesJuego[i][j].setEnabled(false);
 					}
 				}
@@ -212,8 +213,14 @@ public class VentanaPrincipal {
 			refrescarPantalla();
 			JOptionPane.showMessageDialog(ventana, ("Has tocado una mina. Has perdido"));
 		} else if (juego.esFinJuego()) {
+			for (int i = 0; i < panelesJuego.length; i++) {
+				for (int j = 0; j < panelesJuego[i].length; j++) {
+					if (!juego.abrirCasilla(i, j)) {
+						botonesJuego[i][j].setEnabled(false);
+					}
+				}
+			}			
 			JOptionPane.showMessageDialog(ventana, ("Has conseguido esquivar las minas. Has ganado."));
-
 		}
 		refrescarPantalla();
 	}
