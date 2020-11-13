@@ -15,8 +15,14 @@ import javax.swing.SwingConstants;
 
 /**
  * Ventana principal del Buscaminas
- * 
+ * {@link #inicializar()} {@code 
+ * #ventana.setVisible(true);
+ * #inicializarComponentes();
+ * #inicializarListeners()}
  * @author Ángel Canalo Domínguez
+ * @version 1.0
+ * @since 13-11-2020
+ * @see ControlJuego
  */
 public class VentanaPrincipal {
 
@@ -205,7 +211,7 @@ public class VentanaPrincipal {
 						panelesJuego[i][j].removeAll();
 						JLabel minaPisada = new JLabel("X", JLabel.CENTER);
 						panelesJuego[i][j].add(minaPisada);
-					}else{
+					} else {
 						botonesJuego[i][j].setEnabled(false);
 					}
 				}
@@ -219,7 +225,7 @@ public class VentanaPrincipal {
 						botonesJuego[i][j].setEnabled(false);
 					}
 				}
-			}			
+			}
 			JOptionPane.showMessageDialog(ventana, ("Has conseguido esquivar las minas. Has ganado."));
 		}
 		refrescarPantalla();
