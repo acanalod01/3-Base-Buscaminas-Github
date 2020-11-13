@@ -48,6 +48,12 @@ public class ControlJuego {
 		for (int i = 0; i < MINAS_INICIALES; i++) {
 			int posX = rd.nextInt(LADO_TABLERO);
 			int posY = rd.nextInt(LADO_TABLERO);
+			if (tablero[posX][posY] == MINA) {
+				do {
+					posX = rd.nextInt(LADO_TABLERO);
+					posY = rd.nextInt(LADO_TABLERO);
+				} while (tablero[posX][posY] == MINA);
+			}
 			tablero[posX][posY] = MINA;
 		}
 
