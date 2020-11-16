@@ -23,7 +23,6 @@ public class ControlJuego {
 
 		// Inicializamos una nueva partida
 		inicializarPartida();
-		depurarTablero();
 	}
 
 	/**
