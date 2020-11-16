@@ -2,9 +2,15 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,6 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.image.*;
+
 
 /**
  * Ventana principal del Buscaminas
@@ -209,7 +217,16 @@ public class VentanaPrincipal {
 				for (int j = 0; j < panelesJuego[i].length; j++) {
 					if (!juego.abrirCasilla(i, j)) {
 						panelesJuego[i][j].removeAll();
-						JLabel minaPisada = new JLabel("X", JLabel.CENTER);
+						BufferedImage img=null;
+						try{
+							img=ImageIO.read(new File("mina.png"));
+						}catch(IOException e){
+							e.printStackTrace();
+						}
+						JLabel minaPisada=new JLabel();
+						Image imagenMina=img.getScaledInstance(panelesJuego[i][j].getWidth(), panelesJuego[i][j].getHeight(), Image.SCALE_SMOOTH);
+						ImageIcon iconoMina=new ImageIcon(imagenMina);
+						minaPisada.setIcon(iconoMina);
 						panelesJuego[i][j].add(minaPisada);
 					} else {
 						botonesJuego[i][j].setEnabled(false);
