@@ -219,7 +219,7 @@ public class VentanaPrincipal {
 						panelesJuego[i][j].removeAll();
 						BufferedImage img=null;
 						try{
-							img=ImageIO.read(new File("mina.png"));
+							img=ImageIO.read(new File("3-Base-Buscaminas-Github/imagenes/mina.png"));
 						}catch(IOException e){
 							e.printStackTrace();
 						}
