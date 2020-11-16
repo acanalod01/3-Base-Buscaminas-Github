@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -57,7 +56,7 @@ public class ControlJuego {
 			tablero[posX][posY] = MINA;
 		}
 
-		// Al final del m�todo hay que guardar el n�mero de minas para las casillas que
+		// Al final del método hay que guardar el número de minas para las casillas que
 		// no son mina:
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero[i].length; j++) {
