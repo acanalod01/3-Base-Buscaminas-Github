@@ -208,6 +208,11 @@ public class VentanaPrincipal {
 	 * @param porExplosion : Un booleano que indica si es final del juego porque ha
 	 *                     explotado una mina (true) o bien porque hemos desactivado
 	 *                     todas (false)
+	 * 
+	 * <p>
+	 * Si explota una mina, se crea una imagen, con anchura y altura iguales a las del botón en la que se encuentre,
+	 * y se pinta en cada una de las posiciones del tablero donde se encontraban las minas
+	 * </p>
 	 * @post : Todos los botones se desactivan excepto el de volver a iniciar el
 	 *       juego.
 	 */
